@@ -1,0 +1,11 @@
+body{
+    background-image: url(/assent/img/pexels-photo-716398.webp);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.full{
+    height: 50vh;
+    background-color: #d3cccc4f;
+    border-radius: 8px;
+}
