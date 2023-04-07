@@ -1,73 +1,82 @@
-
-
-
-
-const theTimer = document.querySelector('.timer');
-const userType = document.querySelector('#textEntered');
-const orginalText = document.querySelector('#orginalText p').innerHTML;
-const wallper = document.querySelector('#wallpaper');
+const theTime=document.querySelector('.timer');
+const testArea=document.querySelector('#textEntered');
+const originText = document.querySelector('#orginalText p ').innerHTML;
+const testWrapper = document.querySelector('#wallpaper');
+const btnReset = document.querySelector('#reset');
 
 var timer = [0,0,0,0];
-
-var ruuningtimer = false;
-
+var timerRunnig = false;
 var interval;
 
-function addZero(time) {
-    if (time <= 9){
-        time = "0"+ time;
 
+function addZero(time){
+    if (time<=9){
+        time ="0"+time;
+        
     }
-    return time
+    return time ;
+}
+function runTimer(){
+
+    let currentTime = addZero( timer[0])+ ":"+
+        addZero( timer[1])+":"+addZero( timer[2]);
+
+    theTime.innerHTML=currentTime;
+
+    timer[3] ++;
+
+    timer[0] =Math.floor ((timer[3]/100)/60);
+    timer[1]= Math.floor((timer[3]/100)-(timer[0]*60));
+    timer[2]= Math.floor(timer[3] - (timer[1]*100)-(timer[0]*6000));
 }
 
+function spellcheck(){
 
-function runTime() {
-    let strodTime = addZero(timer[0]) + ":" +addZero(timer[1]) + ":" + addZero(timer[2]) ;
-    theTimer.innerHTML= strodTime;
-    timer[3]++;
+    let textEntered = testArea.value;
 
-    timer[0]= Math.floor((timer[3] / 100  ) / 60  );
-    timer[1]= Math.floor((timer[3] / 100  ) -(timer[0] * 60 )  );
-    timer[2]= Math.floor(timer[3] - (timer[1] * 100) - (timer[0] * 6000) );
+    let originTextmach = originText.substring(0, textEntered.length);
 
-}
+    if(textEntered == originText){
 
+        testWrapper.style.borderColor="green";
+        clearInterval(interval);
 
-
-function spellCheck(){
-    let textEntered=userType.value;
-    let originTextMatch=orginalText.substring(0,textEntered.length);
-    
-    
-    if(textEntered==orginalText)
-    {
-    
-    wallper.style.borderColor="green";
-    clearInterval(interval);
-    
     }else{
-        if(textEntered==originTextMatch){
-    
-        wallper.style.borderColor="yellow";
-      
+
+        if ( textEntered == originTextmach){
+            testWrapper.style.borderColor="yellow";
+        }else{
+            testWrapper.style.borderColor="red";
         }
-        else
-        {
-            
-            wallper.style.borderColor="red";
-        }
-    }
+
     }
 
-function start() {
-    let textLength = userType.value.length;
 
-    if (textLength == 0 && !ruuningtimer) {
-        ruuningtimer = true;
-      interval=  setInterval(runTime,10);
-    }
 }
 
-userType.addEventListener("keypress",start);
-userType.addEventListener("keyup",spellCheck);
+
+function reset(){
+    clearInterval(interval);
+    interval=null;
+    timer=[0,0,0,0];
+    timerRunnig=false;
+
+
+    testArea.value="";
+    theTime.innerHTML="00:00:00";
+    testWrapper.style.borderColor="grey";
+
+}
+
+function start(){
+    let textLength = testArea.value.length;
+    if(textLength == 0 && !timerRunnig){
+        timerRunnig = true;
+        setInterval(runTimer,10);
+    }
+    
+}
+
+testArea.addEventListener("keypress",start);
+testArea.addEventListener("keyup",spellcheck);
+btnReset.addEventListener('click',reset);
