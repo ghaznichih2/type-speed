@@ -31,7 +31,7 @@
 #orginalText{
     background-color:#9e9e9e4f ;
     border-radius: 5px; 
-    
+    direction: rtl;
     height: 30vh;
     
 }
@@ -42,5 +42,34 @@
 }
 #textEntered{
     height: 30vh;
+    direction: rtl;
     
+}
+
+
+
+.modal-back{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(0, 0, 0, 0.712);
+    z-index: 999;
+}
+.add-user-modal{
+    position: fixed;
+    height: 70vh;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    bottom: -70vh;
+    
+}
+
+.add-user-modal.showe{
+    bottom: 0;
+    box-shadow: 0 0 10px blue;
 }

@@ -85,22 +85,29 @@
      </header>
 
      <div id="orginalText" class=" container" >
-        <p  >
-            test pls work
-        </p>
+        <p class=" t_1 m-r-10 m-t-10 p-r-10 p-t-10 f-bold fs-20"
+        >سلام من همایونم بیا ببینم سرعت تایپ کی بیشتر هست .</p>
+
+        <p class=" t_2 m-r-10 m-t-10 p-r-10 p-t-10 f-bold fs-20 dis-none"
+        >یادت نرع هیچ وقت تسلیم نشو . امید در سختی ها یعنی شروعی تازه .</p>
+
      </div>
+
+
+
+
 
      <div  class="row container">
 
         <div class=" container m-t-5 col s6">
-            <button class="btn rounded_pill">
+            <button id="chang" class="btn rounded_pill">
                 تعویض متن
             </button>
         </div>
 
         <div class=" container m-t-5 col s6 ">
-            <button class="btn rounded_pill right">
-                دریافت متن
+            <button id="add-user-bottem" class="btn rounded_pill right">
+                ایجاد متن جدید
             </button>
         </div>
 
@@ -125,6 +132,65 @@
             </button>
         </div>
     </div>
+
+
+
+
+
+
+
+
+<div class="modal-back dis-none"></div>
+
+        <div class="add-user-modal container rounded_top_30 trans-0-6">
+          
+          <div class="row p-l-40 p-r-40 center-on-small-only">
+            <h5>
+              <i class="material-icons m-l-5 m-t-7 pos-relative top-4 ">add</i>
+              اضافه کردن متن جدید
+            </h5>
+          </div>
+
+          <div class="row ">
+            <form action="">
+              <div class="input-field col s6">
+                <input placeholder="user Name" id="user_name" type="text" class="validate">
+                <label class=" active" for="user_name">user Name</label>
+              </div>
+
+              <div class="input-field col s6">
+                <input placeholder="Password" id="password" type="password" class="validate">
+                <label class=" active" for="password">Password</label>
+              </div>
+
+              <div class="input-field col s12">
+                
+                <textarea class=" m-t-10"
+                name="text" id="newText" cols="30" rows="10"></textarea>
+                <label class="active black-text m-b-10 p-b-10" for="newText">متن</label>
+              </div>
+
+
+            </form>
+
+            <div class=" container">
+                <button type="button" class=" container waves-effect waves-light rounded_pix  
+            btn  blue darken-1 m-t-15 m-b-10  f-bold ">
+
+               save
+            </button>
+            </div>
+            
+            
+          </div>
+
+
+
+
+
+
+
+
    
 
 

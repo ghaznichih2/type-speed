@@ -1,8 +1,11 @@
 const theTime=document.querySelector('.timer');
 const testArea=document.querySelector('#textEntered');
-const originText = document.querySelector('#orginalText p ').innerHTML;
 const testWrapper = document.querySelector('#wallpaper');
 const btnReset = document.querySelector('#reset');
+
+let originText = document.querySelector('#orginalText .t_1 ').innerHTML;
+let originText2 = document.querySelector('#orginalText .t_2 ').innerHTML;
+
 
 var timer = [0,0,0,0];
 var timerRunnig = false;
@@ -29,6 +32,20 @@ function runTimer(){
     timer[1]= Math.floor((timer[3]/100)-(timer[0]*60));
     timer[2]= Math.floor(timer[3] - (timer[1]*100)-(timer[0]*6000));
 }
+
+
+function change() {
+    
+    
+    document.querySelector('.t_1').classList.toggle('dis-none');
+    document.querySelector('.t_2').classList.toggle('dis-block');
+
+    originText = originText2;
+    return originText;
+    
+}
+
+
 
 function spellcheck(){
 
@@ -72,11 +89,33 @@ function start(){
     let textLength = testArea.value.length;
     if(textLength == 0 && !timerRunnig){
         timerRunnig = true;
-        setInterval(runTimer,10);
+      interval =  setInterval(runTimer,10);
     }
     
 }
 
+
+
+//button 
+const changTaxt= document.querySelector('#chang');
+
+
+
 testArea.addEventListener("keypress",start);
 testArea.addEventListener("keyup",spellcheck);
 btnReset.addEventListener('click',reset);
+
+changTaxt.addEventListener("click",change);
+
+
+
+const addUserButton= document.getElementById("add-user-bottem");
+    addUserButton.addEventListener('click',()=> {
+      document.querySelector('.add-user-modal').classList.add('showe')
+      document.querySelector('.modal-back').classList.remove('dis-none')
+    })
+
+    document.querySelector('.modal-back').addEventListener('click',(e) =>{
+      document.querySelector('.add-user-modal').classList.remove("showe")
+      e.target.classList.add('dis-none')
+    })
